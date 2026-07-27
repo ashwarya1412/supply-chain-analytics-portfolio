@@ -79,4 +79,4 @@ Python (pandas), Tableau, Excel
 
 ## Author
 
-Built as part of a supply chain analytics portfolio targeting Senior In-Stock Manager (ISM) roles at Amazon.
+Built as part of a supply chain analytics portfolio.
