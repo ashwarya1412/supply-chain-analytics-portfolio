@@ -27,7 +27,7 @@ Using the [Olist Brazilian E-Commerce public dataset](https://www.kaggle.com/dat
 | Overall Service Level | 81.7% |
 
 ## Dashboard
-
+![Executive Overview Dashboard](executive_overview_screenshot.png)
 The Tableau Executive Overview combines:
 - **Vendor Risk Quadrant** — delivery unpredictability (VLT coefficient of variation) vs. order volume, sized by exposure
 - **Exposure by State** — geographic concentration of financial risk
