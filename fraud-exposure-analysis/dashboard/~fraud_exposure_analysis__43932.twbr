@@ -1,0 +1,1612 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='flagged_orders' inline='true' name='federated.1w2cssd0ktmt4615qohr2005zogl' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='flagged_orders' name='textscan.1cnnf560j805a91725o0y17pfigk'>
+            <connection class='textscan' directory='C:/Users/aishw/Desktop/ism-supplychain-portfolio/fraud-exposure-analysis/outputs' filename='flagged_orders.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1cnnf560j805a91725o0y17pfigk' name='flagged_orders.csv' table='[flagged_orders#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='order_id' ordinal='0' />
+            <column datatype='string' name='customer_id' ordinal='1' />
+            <column datatype='string' name='order_status' ordinal='2' />
+            <column datatype='datetime' name='order_purchase_timestamp' ordinal='3' />
+            <column datatype='real' name='review_score' ordinal='4' />
+            <column datatype='real' name='payment_value' ordinal='5' />
+            <column datatype='boolean' name='is_risk_flag' ordinal='6' />
+            <column datatype='string' name='risk_reason' ordinal='7' />
+            <column datatype='real' name='exposure_usd' ordinal='8' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_status</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_status]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>order_status</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_purchase_timestamp</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_purchase_timestamp]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>order_purchase_timestamp</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>review_score</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[review_score]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>review_score</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>payment_value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[payment_value]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>payment_value</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_risk_flag</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_risk_flag]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>is_risk_flag</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>risk_reason</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[risk_reason]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>risk_reason</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>exposure_usd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[exposure_usd]</local-name>
+            <parent-name>[flagged_orders.csv]</parent-name>
+            <remote-alias>exposure_usd</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Overall Risk Rate' datatype='real' name='[Calculation_3019011955617792]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD(IF [is_risk_flag] THEN [order_id] END) / COUNTD([order_id])' />
+      </column>
+      <column caption='flagged_orders.csv' datatype='table' name='[__tableau_internal_object_id__].[flagged_orders.csv_467457378E5B4492933FD971FC228E7C]' role='measure' type='quantitative' />
+      <column caption='Customer Id' datatype='string' name='[customer_id]' role='dimension' type='nominal' />
+      <column caption='Exposure Usd' datatype='real' name='[exposure_usd]' role='measure' type='quantitative' />
+      <column caption='Is Risk Flag' datatype='boolean' name='[is_risk_flag]' role='dimension' type='nominal' />
+      <column caption='Order Id' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+      <column caption='Order Purchase Timestamp' datatype='datetime' name='[order_purchase_timestamp]' role='dimension' type='ordinal' />
+      <column caption='Order Status' datatype='string' name='[order_status]' role='dimension' type='nominal' />
+      <column caption='Payment Value' datatype='real' name='[payment_value]' role='measure' type='quantitative' />
+      <column caption='Review Score' datatype='real' name='[review_score]' role='measure' type='quantitative' />
+      <column caption='Risk Reason' datatype='string' name='[risk_reason]' role='dimension' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/aishw/AppData/Local/Temp/TableauTemp/#TableauTemp_1u815jk0j2w3wz0zts8lc118fah0.hyper' default-settings='yes' schema='Extract' sslmode='' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>order_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[order_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>order_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>99441</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>customer_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[customer_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>customer_id</remote-alias>
+              <ordinal>1</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>99441</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_status</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[order_status]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>order_status</remote-alias>
+              <ordinal>2</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_purchase_timestamp</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[order_purchase_timestamp]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>order_purchase_timestamp</remote-alias>
+              <ordinal>3</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>99441</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>review_score</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[review_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>review_score</remote-alias>
+              <ordinal>4</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>payment_value</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[payment_value]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>payment_value</remote-alias>
+              <ordinal>5</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>23557</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_risk_flag</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_risk_flag]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_risk_flag</remote-alias>
+              <ordinal>6</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>risk_reason</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[risk_reason]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>risk_reason</remote-alias>
+              <ordinal>7</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>exposure_usd</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[exposure_usd]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>exposure_usd</remote-alias>
+              <ordinal>8</ordinal>
+              <family>flagged_orders.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>21623</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='flagged_orders.csv' id='flagged_orders.csv_467457378E5B4492933FD971FC228E7C'>
+            <properties context=''>
+              <relation connection='textscan.1cnnf560j805a91725o0y17pfigk' name='flagged_orders.csv' table='[flagged_orders#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='order_id' ordinal='0' />
+                  <column datatype='string' name='customer_id' ordinal='1' />
+                  <column datatype='string' name='order_status' ordinal='2' />
+                  <column datatype='datetime' name='order_purchase_timestamp' ordinal='3' />
+                  <column datatype='real' name='review_score' ordinal='4' />
+                  <column datatype='real' name='payment_value' ordinal='5' />
+                  <column datatype='boolean' name='is_risk_flag' ordinal='6' />
+                  <column datatype='string' name='risk_reason' ordinal='7' />
+                  <column datatype='real' name='exposure_usd' ordinal='8' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='seller_risk_summary (2)' inline='true' name='federated.00kj1b20arqj4111tky550kdace7' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='seller_risk_summary' name='textscan.19mmt830hal915157dl250rzed13'>
+            <connection class='textscan' directory='C:/Users/aishw/Desktop/ism-supplychain-portfolio/fraud-exposure-analysis/outputs' filename='seller_risk_summary.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.19mmt830hal915157dl250rzed13' name='seller_risk_summary.csv' table='[seller_risk_summary#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='seller_id' ordinal='0' />
+            <column datatype='integer' name='total_orders' ordinal='1' />
+            <column datatype='real' name='total_exposure_usd' ordinal='2' />
+            <column datatype='integer' name='flagged_orders' ordinal='3' />
+            <column datatype='real' name='risk_rate' ordinal='4' />
+            <column datatype='string' name='risk_tier' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>seller_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[seller_id]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>seller_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_orders]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>total_orders</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_exposure_usd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_exposure_usd]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>total_exposure_usd</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>flagged_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[flagged_orders]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>flagged_orders</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>risk_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[risk_rate]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>risk_rate</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>risk_tier</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[risk_tier]</local-name>
+            <parent-name>[seller_risk_summary.csv]</parent-name>
+            <remote-alias>risk_tier</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='seller_risk_summary.csv' datatype='table' name='[__tableau_internal_object_id__].[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]' role='measure' type='quantitative' />
+      <column caption='Flagged Orders' datatype='integer' name='[flagged_orders]' role='measure' type='quantitative' />
+      <column caption='Risk Rate' datatype='real' name='[risk_rate]' role='measure' type='quantitative' />
+      <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+      <column caption='Seller Id' datatype='string' name='[seller_id]' role='dimension' type='nominal' />
+      <column caption='Total Exposure Usd' datatype='real' name='[total_exposure_usd]' role='measure' type='quantitative' />
+      <column caption='Total Orders' datatype='integer' name='[total_orders]' role='measure' type='quantitative' />
+      <column-instance column='[risk_tier]' derivation='None' name='[none:risk_tier:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/aishw/AppData/Local/Temp/TableauTemp/#TableauTemp_0wxbnu60tp5mep1g91fx30npfisy.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='07/28/2026 12:59:28 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>seller_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[seller_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>seller_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3095</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_orders</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_orders]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_orders</remote-alias>
+              <ordinal>1</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>200</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_exposure_usd</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_exposure_usd]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_exposure_usd</remote-alias>
+              <ordinal>2</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1806</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>flagged_orders</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[flagged_orders]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>flagged_orders</remote-alias>
+              <ordinal>3</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>58</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>risk_rate</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[risk_rate]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>risk_rate</remote-alias>
+              <ordinal>4</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>314</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>risk_tier</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[risk_tier]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>risk_tier</remote-alias>
+              <ordinal>5</ordinal>
+              <family>seller_risk_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:risk_tier:nk]' type='palette'>
+            <map to='#309143'>
+              <bucket>&quot;Low Risk&quot;</bucket>
+            </map>
+            <map to='#e03531'>
+              <bucket>&quot;High Risk&quot;</bucket>
+            </map>
+            <map to='#e39802'>
+              <bucket>&quot;Medium Risk&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='seller_risk_summary.csv' id='seller_risk_summary.csv_65D0C3BB9D4F499390B9FC745087B050'>
+            <properties context=''>
+              <relation connection='textscan.19mmt830hal915157dl250rzed13' name='seller_risk_summary.csv' table='[seller_risk_summary#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='seller_id' ordinal='0' />
+                  <column datatype='integer' name='total_orders' ordinal='1' />
+                  <column datatype='real' name='total_exposure_usd' ordinal='2' />
+                  <column datatype='integer' name='flagged_orders' ordinal='3' />
+                  <column datatype='real' name='risk_rate' ordinal='4' />
+                  <column datatype='string' name='risk_tier' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='category_risk_summary' inline='true' name='federated.08tucfa134ukwm11ceeod10sis28' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='category_risk_summary' name='textscan.0yp9lhu0y63uc71898m411lo7hml'>
+            <connection class='textscan' directory='C:/Users/aishw/Desktop/ism-supplychain-portfolio/fraud-exposure-analysis/outputs' filename='category_risk_summary.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0yp9lhu0y63uc71898m411lo7hml' name='category_risk_summary.csv' table='[category_risk_summary#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='product_category_name' ordinal='0' />
+            <column datatype='integer' name='total_orders' ordinal='1' />
+            <column datatype='real' name='total_exposure_usd' ordinal='2' />
+            <column datatype='integer' name='flagged_orders' ordinal='3' />
+            <column datatype='real' name='risk_rate' ordinal='4' />
+            <column datatype='string' name='risk_tier' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_category_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_category_name]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>product_category_name</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_orders]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>total_orders</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_exposure_usd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_exposure_usd]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>total_exposure_usd</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>flagged_orders</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[flagged_orders]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>flagged_orders</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>risk_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[risk_rate]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>risk_rate</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>risk_tier</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[risk_tier]</local-name>
+            <parent-name>[category_risk_summary.csv]</parent-name>
+            <remote-alias>risk_tier</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='category_risk_summary.csv' datatype='table' name='[__tableau_internal_object_id__].[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]' role='measure' type='quantitative' />
+      <column caption='Flagged Orders' datatype='integer' name='[flagged_orders]' role='measure' type='quantitative' />
+      <column caption='Product Category Name' datatype='string' name='[product_category_name]' role='dimension' type='nominal' />
+      <column caption='Risk Rate' datatype='real' name='[risk_rate]' role='measure' type='quantitative' />
+      <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+      <column caption='Total Exposure Usd' datatype='real' name='[total_exposure_usd]' role='measure' type='quantitative' />
+      <column caption='Total Orders' datatype='integer' name='[total_orders]' role='measure' type='quantitative' />
+      <column-instance column='[risk_tier]' derivation='None' name='[none:risk_tier:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/aishw/AppData/Local/Temp/TableauTemp/#TableauTemp_0h6thfy1darjdt1brwqwd0hl2dou.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='07/28/2026 12:26:17 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>product_category_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[product_category_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>product_category_name</remote-alias>
+              <ordinal>0</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>73</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_orders</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_orders]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_orders</remote-alias>
+              <ordinal>1</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>69</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_exposure_usd</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_exposure_usd]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_exposure_usd</remote-alias>
+              <ordinal>2</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>72</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>flagged_orders</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[flagged_orders]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>flagged_orders</remote-alias>
+              <ordinal>3</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>55</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>risk_rate</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[risk_rate]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>risk_rate</remote-alias>
+              <ordinal>4</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>69</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>risk_tier</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[risk_tier]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>risk_tier</remote-alias>
+              <ordinal>5</ordinal>
+              <family>category_risk_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:risk_tier:nk]' type='palette'>
+            <map to='#59a14f'>
+              <bucket>&quot;Low Risk&quot;</bucket>
+            </map>
+            <map to='#e03531'>
+              <bucket>&quot;High Risk&quot;</bucket>
+            </map>
+            <map to='#e39802'>
+              <bucket>&quot;Medium Risk&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='category_risk_summary.csv' id='category_risk_summary.csv_5959FAA8449147F0924C5924894E0E9D'>
+            <properties context=''>
+              <relation connection='textscan.0yp9lhu0y63uc71898m411lo7hml' name='category_risk_summary.csv' table='[category_risk_summary#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='product_category_name' ordinal='0' />
+                  <column datatype='integer' name='total_orders' ordinal='1' />
+                  <column datatype='real' name='total_exposure_usd' ordinal='2' />
+                  <column datatype='integer' name='flagged_orders' ordinal='3' />
+                  <column datatype='real' name='risk_rate' ordinal='4' />
+                  <column datatype='string' name='risk_tier' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Category Risk by Exposure'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Category Risk by Exposure Top 15</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='category_risk_summary' name='federated.08tucfa134ukwm11ceeod10sis28' />
+          </datasources>
+          <datasource-dependencies datasource='federated.08tucfa134ukwm11ceeod10sis28'>
+            <column-instance column='[product_category_name]' derivation='None' name='[none:product_category_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[risk_tier]' derivation='None' name='[none:risk_tier:nk]' pivot='key' type='nominal' />
+            <column caption='Product Category Name' datatype='string' name='[product_category_name]' role='dimension' type='nominal' />
+            <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+            <column-instance column='[total_exposure_usd]' derivation='Sum' name='[sum:total_exposure_usd:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Exposure Usd' datatype='real' name='[total_exposure_usd]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.08tucfa134ukwm11ceeod10sis28].[none:product_category_name:nk]'>
+            <groupfilter count='15' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([total_exposure_usd])' function='order' user:ui-marker='order'>
+                <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;agro_industria_e_comercio&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;alimentos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;alimentos_bebidas&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;artes&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;artes_e_artesanato&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;artigos_de_festas&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;artigos_de_natal&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;audio&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;automotivo&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;bebes&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;bebidas&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;beleza_saude&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;brinquedos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;cama_mesa_banho&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;casa_conforto&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;casa_conforto_2&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;casa_construcao&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;cds_dvds_musicais&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;cine_foto&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;climatizacao&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;consoles_games&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;construcao_ferramentas_construcao&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;construcao_ferramentas_ferramentas&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;construcao_ferramentas_iluminacao&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;construcao_ferramentas_jardim&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;construcao_ferramentas_seguranca&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;cool_stuff&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;dvds_blu_ray&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;eletrodomesticos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;eletrodomesticos_2&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;eletronicos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;eletroportateis&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;esporte_lazer&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_bolsas_e_acessorios&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_calcados&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_esporte&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_roupa_feminina&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_roupa_infanto_juvenil&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_roupa_masculina&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fashion_underwear_e_moda_praia&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;ferramentas_jardim&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;flores&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;fraldas_higiene&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;industria_comercio_e_negocios&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;informatica_acessorios&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;instrumentos_musicais&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;la_cuisine&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;livros_importados&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;livros_interesse_geral&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;livros_tecnicos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;malas_acessorios&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;market_place&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_colchao_e_estofado&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_cozinha_area_de_servico_jantar_e_jardim&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_decoracao&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_escritorio&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_quarto&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;moveis_sala&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;musica&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;papelaria&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;pc_gamer&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;pcs&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;perfumaria&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;pet_shop&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;portateis_casa_forno_e_cafe&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;portateis_cozinha_e_preparadores_de_alimentos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;relogios_presentes&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;seguros_e_servicos&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;sinalizacao_e_seguranca&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;tablets_impressao_imagem&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;telefonia&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;telefonia_fixa&quot;' />
+                  <groupfilter function='member' level='[none:product_category_name:nk]' member='&quot;utilidades_domesticas&quot;' />
+                </groupfilter>
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.08tucfa134ukwm11ceeod10sis28].[none:product_category_name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.08tucfa134ukwm11ceeod10sis28].[sum:total_exposure_usd:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.08tucfa134ukwm11ceeod10sis28].[none:product_category_name:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.08tucfa134ukwm11ceeod10sis28].[none:risk_tier:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.08tucfa134ukwm11ceeod10sis28].[none:product_category_name:nk]</rows>
+        <cols>[federated.08tucfa134ukwm11ceeod10sis28].[sum:total_exposure_usd:qk]</cols>
+      </table>
+      <simple-id uuid='{DDF31DCD-89F1-4DB8-AAC7-AA114C532473}' />
+    </worksheet>
+    <worksheet name='KPI - Overall Risk Rate'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>Overall Risk Rate</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='flagged_orders' name='federated.1w2cssd0ktmt4615qohr2005zogl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1w2cssd0ktmt4615qohr2005zogl'>
+            <column caption='Overall Risk Rate' datatype='real' name='[Calculation_3019011955617792]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD(IF [is_risk_flag] THEN [order_id] END) / COUNTD([order_id])' />
+            </column>
+            <column caption='Is Risk Flag' datatype='boolean' name='[is_risk_flag]' role='dimension' type='nominal' />
+            <column caption='Order Id' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_3019011955617792]' derivation='User' name='[usr:Calculation_3019011955617792:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1w2cssd0ktmt4615qohr2005zogl].[usr:Calculation_3019011955617792:qk]' value='p0.0%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='28' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1w2cssd0ktmt4615qohr2005zogl].[usr:Calculation_3019011955617792:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{54939256-84CE-4E70-B76E-D687F0E7BB8B}' />
+    </worksheet>
+    <worksheet name='KPI - Risk Reason Breakdown'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>Risk Reason Breakdown</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='flagged_orders' name='federated.1w2cssd0ktmt4615qohr2005zogl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1w2cssd0ktmt4615qohr2005zogl'>
+            <column-instance column='[order_id]' derivation='CountD' name='[ctd:order_id:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[risk_reason]' derivation='None' name='[none:risk_reason:nk]' pivot='key' type='nominal' />
+            <column caption='Order Id' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+            <column caption='Risk Reason' datatype='string' name='[risk_reason]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1w2cssd0ktmt4615qohr2005zogl].[none:risk_reason:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:risk_reason:nk]' member='&quot;canceled&quot;' />
+              <groupfilter function='member' level='[none:risk_reason:nk]' member='&quot;low_review&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1w2cssd0ktmt4615qohr2005zogl].[none:risk_reason:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1w2cssd0ktmt4615qohr2005zogl].[none:risk_reason:nk]</rows>
+        <cols>[federated.1w2cssd0ktmt4615qohr2005zogl].[ctd:order_id:qk]</cols>
+      </table>
+      <simple-id uuid='{165F6B7B-A38A-4FD3-9018-470DC3CFEA43}' />
+    </worksheet>
+    <worksheet name='KPI - Top 10 Sellers by Exposure'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Top 10 Sellers by Exposure</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='seller_risk_summary (2)' name='federated.00kj1b20arqj4111tky550kdace7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00kj1b20arqj4111tky550kdace7'>
+            <column-instance column='[risk_tier]' derivation='None' name='[none:risk_tier:nk]' pivot='key' type='nominal' />
+            <column-instance column='[seller_id]' derivation='None' name='[none:seller_id:nk]' pivot='key' type='nominal' />
+            <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+            <column caption='Seller Id' datatype='string' name='[seller_id]' role='dimension' type='nominal' />
+            <column-instance column='[total_exposure_usd]' derivation='Sum' name='[sum:total_exposure_usd:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Exposure Usd' datatype='real' name='[total_exposure_usd]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.00kj1b20arqj4111tky550kdace7].[none:seller_id:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([total_exposure_usd])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:seller_id:nk]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.00kj1b20arqj4111tky550kdace7].[none:seller_id:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.00kj1b20arqj4111tky550kdace7].[sum:total_exposure_usd:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.00kj1b20arqj4111tky550kdace7].[none:seller_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.00kj1b20arqj4111tky550kdace7].[none:risk_tier:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.00kj1b20arqj4111tky550kdace7].[none:seller_id:nk]</rows>
+        <cols>[federated.00kj1b20arqj4111tky550kdace7].[sum:total_exposure_usd:qk]</cols>
+      </table>
+      <simple-id uuid='{54CCC2A6-9549-4C47-BCF1-6D3262C2D972}' />
+    </worksheet>
+    <worksheet name='KPI - Total Exposure'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>Total Exposure</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='flagged_orders' name='federated.1w2cssd0ktmt4615qohr2005zogl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1w2cssd0ktmt4615qohr2005zogl'>
+            <column caption='Exposure Usd' datatype='real' name='[exposure_usd]' role='measure' type='quantitative' />
+            <column-instance column='[exposure_usd]' derivation='Sum' name='[sum:exposure_usd:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1w2cssd0ktmt4615qohr2005zogl].[sum:exposure_usd:qk]' value='C1033%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-weight' value='bold' />
+            <format attr='font-size' value='28' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1w2cssd0ktmt4615qohr2005zogl].[sum:exposure_usd:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{CEFC55E2-EC17-49AC-80B6-BBFA7A4FE9E5}' />
+    </worksheet>
+    <worksheet name='KPI - Total Flagged Orders'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>Total Flagged Orders</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='flagged_orders' name='federated.1w2cssd0ktmt4615qohr2005zogl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1w2cssd0ktmt4615qohr2005zogl'>
+            <column-instance column='[order_id]' derivation='CountD' name='[ctd:order_id:qk]' pivot='key' type='quantitative' />
+            <column caption='Is Risk Flag' datatype='boolean' name='[is_risk_flag]' role='dimension' type='nominal' />
+            <column-instance column='[is_risk_flag]' derivation='None' name='[none:is_risk_flag:nk]' pivot='key' type='nominal' />
+            <column caption='Order Id' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1w2cssd0ktmt4615qohr2005zogl].[none:is_risk_flag:nk]'>
+            <groupfilter function='member' level='[none:is_risk_flag:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1w2cssd0ktmt4615qohr2005zogl].[none:is_risk_flag:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='28' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1w2cssd0ktmt4615qohr2005zogl].[ctd:order_id:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{C06DB129-46C5-426F-AE6D-92EC95FF84BD}' />
+    </worksheet>
+    <worksheet name='Seller Risk Quadrant'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='seller_risk_summary (2)' name='federated.00kj1b20arqj4111tky550kdace7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00kj1b20arqj4111tky550kdace7'>
+            <column-instance column='[risk_tier]' derivation='None' name='[none:risk_tier:nk]' pivot='key' type='nominal' />
+            <column-instance column='[seller_id]' derivation='None' name='[none:seller_id:nk]' pivot='key' type='nominal' />
+            <column caption='Risk Rate' datatype='real' name='[risk_rate]' role='measure' type='quantitative' />
+            <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+            <column caption='Seller Id' datatype='string' name='[seller_id]' role='dimension' type='nominal' />
+            <column-instance column='[risk_rate]' derivation='Sum' name='[sum:risk_rate:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_exposure_usd]' derivation='Sum' name='[sum:total_exposure_usd:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_orders]' derivation='Sum' name='[sum:total_orders:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Exposure Usd' datatype='real' name='[total_exposure_usd]' role='measure' type='quantitative' />
+            <column caption='Total Orders' datatype='integer' name='[total_orders]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.00kj1b20arqj4111tky550kdace7].[sum:risk_rate:qk]' field-type='quantitative' max='0.54395144788757976' min='0.040515408522856143' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.00kj1b20arqj4111tky550kdace7].[sum:total_orders:qk]' field-type='quantitative' max='984' min='39' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.00kj1b20arqj4111tky550kdace7].[none:risk_tier:nk]' />
+              <size column='[federated.00kj1b20arqj4111tky550kdace7].[sum:total_exposure_usd:qk]' />
+              <lod column='[federated.00kj1b20arqj4111tky550kdace7].[none:seller_id:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.00kj1b20arqj4111tky550kdace7].[sum:total_orders:qk]</rows>
+        <cols>[federated.00kj1b20arqj4111tky550kdace7].[sum:risk_rate:qk]</cols>
+      </table>
+      <simple-id uuid='{64EC29CE-B96B-4231-A5FD-AE7B57C1C8E8}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Executive Overview'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='90129' id='12' param='horz' type-v2='layout-flow' w='99034' x='483' y='8931'>
+            <zone h='90129' id='10' type-v2='layout-basic' w='99034' x='483' y='8931'>
+              <zone h='24324' id='3' param='horz' type-v2='layout-flow' w='99034' x='483' y='8931'>
+                <zone fixed-size='313' h='24324' id='5' is-fixed='true' name='KPI - Total Flagged Orders' w='19373' x='483' y='8931'>
+                  <layout-cache fixed-size-h='185' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='24324' id='6' name='KPI - Total Exposure' w='21002' x='19856' y='8931'>
+                  <layout-cache type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='24324' id='7' name='KPI - Overall Risk Rate' w='10139' x='40858' y='8931'>
+                  <layout-cache type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='24324' id='8' name='KPI - Risk Reason Breakdown' w='48520' x='50997' y='8931'>
+                  <layout-cache minwidth='200' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone h='35370' id='15' name='Category Risk by Exposure' w='43029' x='56488' y='33255'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='30435' id='21' name='KPI - Top 10 Sellers by Exposure' w='99034' x='483' y='68625'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='35370' id='23' name='Seller Risk Quadrant' w='56005' x='483' y='33255'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone forceUpdate='true' h='7991' id='20' type-v2='text' w='99034' x='483' y='940'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Benton Sans Book' fontsize='22' underline='true'>Order Risk &amp; Fraud Exposure Overview</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='1' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{B1DEDE00-39DC-4CA1-B926-1B770454F36E}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='89'>
+    <window class='worksheet' name='KPI - Total Flagged Orders'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5DEE713C-B492-43F8-9AB8-36DF338209D4}' />
+    </window>
+    <window class='worksheet' name='KPI - Total Exposure'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2A319219-F4B1-4D14-AA24-343364D4DFF9}' />
+    </window>
+    <window class='worksheet' name='KPI - Overall Risk Rate'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{72EF53DE-F13A-4FC7-98AB-B6A5D67A88AD}' />
+    </window>
+    <window class='worksheet' name='KPI - Risk Reason Breakdown'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CA4784F5-B84E-4713-A92D-E70D679E2A85}' />
+    </window>
+    <window class='worksheet' name='Category Risk by Exposure'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.08tucfa134ukwm11ceeod10sis28].[none:product_category_name:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.08tucfa134ukwm11ceeod10sis28].[none:risk_tier:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7F284F68-DE14-406D-B124-BA88FEF3B3EF}' />
+    </window>
+    <window class='worksheet' name='Seller Risk Quadrant'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.00kj1b20arqj4111tky550kdace7].[none:risk_tier:nk]' type='color' />
+            <card pane-specification-id='2' param='[federated.00kj1b20arqj4111tky550kdace7].[sum:total_exposure_usd:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7D076D18-CD6F-40D5-8556-2E5949F68A03}' />
+    </window>
+    <window class='worksheet' name='KPI - Top 10 Sellers by Exposure'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.00kj1b20arqj4111tky550kdace7].[none:risk_tier:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5C4C6800-B0DD-4F74-A6AD-8CFAE46E9ACA}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Executive Overview'>
+      <viewpoints>
+        <viewpoint name='Category Risk by Exposure' />
+        <viewpoint name='KPI - Overall Risk Rate' />
+        <viewpoint name='KPI - Risk Reason Breakdown' />
+        <viewpoint name='KPI - Top 10 Sellers by Exposure' />
+        <viewpoint name='KPI - Total Exposure' />
+        <viewpoint name='KPI - Total Flagged Orders' />
+        <viewpoint name='Seller Risk Quadrant'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{F8F99F9D-77F4-4245-9C0B-44C72C19FD11}' />
+    </window>
+  </windows>
+</workbook>
