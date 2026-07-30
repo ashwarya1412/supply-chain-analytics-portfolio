@@ -1,0 +1,10 @@
+product_category_name,total_qty,total_revenue,avg_unit_price,avg_freight_price,avg_price_vs_competitor,avg_freight_vs_competitor,above_market_count,at_market_count,below_market_count,price_volume_correlation,avg_product_score,avg_customers,holiday_qty_share,record_count
+health_beauty,1842,212409.24,132.31,18.61,71.21,3.63,76,21,33,-0.187,4.15,105.88,0.5613,130
+watches_gifts,1431,207582.17,164.88,16.49,19.0,-0.01,51,12,40,-0.241,3.98,94.59,0.515,103
+garden_tools,2398,163582.54,80.09,28.46,21.38,8.61,55,104,1,-0.298,4.16,110.11,0.4733,160
+computers_accessories,1167,142097.95,119.48,25.1,-8.78,-4.12,15,22,32,0.07,3.99,69.67,0.4139,69
+bed_bath_table,1026,95084.52,78.63,16.14,1.77,-0.36,27,3,31,0.371,3.91,54.31,0.5741,61
+cool_stuff,558,57956.3,107.86,18.98,6.58,0.55,28,6,23,-0.101,4.21,38.04,0.5645,57
+furniture_decor,894,56925.16,60.15,16.94,-6.95,-0.55,16,8,24,0.101,3.98,51.98,0.4251,48
+perfumery,244,20312.52,89.35,14.34,0.0,0.0,11,4,11,-0.258,4.35,16.42,0.5533,26
+consoles_games,239,5800.7,27.03,14.81,0.0,-0.0,0,22,0,-0.566,4.06,19.95,0.5314,22
