@@ -1,6 +1,6 @@
-# ISM Supply Chain Portfolio
+#  Supply Chain Analytics Portfolio
 
-A collection of supply chain analytics projects built to demonstrate the analytical skillset for Senior In-Stock Manager (ISM) roles — vendor risk management, inventory replenishment, and order/fraud risk exposure. All projects use Python (pandas) for data processing and Tableau for interactive dashboards, built on the [Olist Brazilian E-Commerce public dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+A collection of supply chain analytics projects covering vendor risk management, inventory replenishment, order/fraud risk exposure, and pricing analysis. All projects use Python (pandas) for data processing and Tableau for interactive dashboards.
 
 ## Projects
 
