@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="6376"/><column_width id="4" width="0"/></tab_structure><tab_browse><table title="." custom_title="0" dock_id="2" table="0,0:"/><dock_state state="000000ff00000000fd00000001000000020000043b000002aefc0100000002fb000000160064006f0063006b00420072006f007700730065003101000000000000043b0000000000000000fb000000160064006f0063006b00420072006f00770073006500320100000000ffffffff0000011800ffffff000002580000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">/*
+================================================================================
+OPERATIONAL WAREHOUSE MANAGEMENT SYSTEM (WMS) &amp; INVENTORY CONTROL ENGINE
+================================================================================
+Project: Portfolio WMS &amp; Inventory Control Engine
+Target Role Focus: Supply Chain Analyst / In-Stock Manager / WMS Consultant
+Database Engine: SQLite / PostgreSQL Compatible
+Data Source: Kaggle Brazilian E-Commerce Public Dataset (Olist)
+
+--------------------------------------------------------------------------------
+EXECUTIVE SUMMARY OF CORE DATABASE OBJECTS &amp; QUERIES:
+--------------------------------------------------------------------------------
+
+1. SCHEMA &amp; DATA ARCHITECTURE (DDL &amp; DML)
+   - warehouse_locations: Establishes a 5-tier location hierarchy 
+     (Zone -&gt; Aisle -&gt; Rack -&gt; Shelf -&gt; Bin) to simulate physical facility layout.
+   - product_catalog: Stores master SKU metadata, dimensions, unit weights, 
+     and safety stock thresholds ($Min/Max$).
+   - inventory_levels: Relational table mapping active stock balances 
+     (On-Hand, Allocated, Available) across unique bin locations.
+   - inventory_transactions: Audit log capturing stock movement types 
+     (RECEIVING, PUTAWAY, PICK, BIN_TRANSFER).
+
+2. Part 1: OPTIMIZED PICK PATH ROUTER (Serpentine Pick Path)
+   - Supply Chain Function: Outbound Fulfillment &amp; Warehouse Productivity.
+   - Business Impact: Minimizes picker foot travel (&quot;footsteps&quot;) by sorting 
+     picking lines sequentially across Zones, Aisles, Racks, and Bins.
+   - Technical Logic: Groups active inventory reserves and caps picks per order 
+     using MIN() windowing.
+
+3. Part 2 / VIEW: AUTOMATED REPLENISHMENT &amp; IN-STOCK RISK ENGINE
+   - View Name: v_wms_replenishment_alerts
+   - Supply Chain Function: Inventory Availability &amp; Stockout Reduction.
+   - Business Impact: Eliminates manual stock checks by dynamically flagging 
+     SKUs that breach Safety Stock (Critical Risk) or Reorder Points (Warning), 
+     calculating exact Purchase Order reorder quantities to reach Max Stock levels.
+   - Technical Logic: Aggregate evaluation of Available Units (On Hand - Allocated) 
+     against parameterized inventory thresholds using CASE statements.
+
+4. Part 3: ABC INVENTORY VELOCITY &amp; PARETO CLASSIFICATION
+   - Supply Chain Function: Slotting Optimization &amp; Material Handling.
+   - Business Impact: Classifies SKUs into Class A (Top 20% high volume -&gt; slotted 
+     near dispatch docks), Class B (Medium movers), and Class C (Slow/Dead stock 
+     -&gt; upper/rear racks) to reduce handling costs.
+   - Technical Logic: Uses SQLite window function CUME_DIST() over total physical 
+     mass/unit volume to calculate cumulative Pareto distributions.
+================================================================================
+*/
+
+
+
+-- 1. LOCATION MASTER (Bins, Racks, Aisles, Zones)
+CREATE TABLE IF NOT EXISTS warehouse_locations (
+    location_id TEXT PRIMARY KEY,   -- e.g., 'WH1-ZA-A01-R02-B01'
+    zone TEXT NOT NULL,             -- e.g., 'Zone-A' (High Velocity Pick Zone)
+    aisle TEXT NOT NULL,            -- e.g., 'Aisle-01'
+    rack TEXT NOT NULL,             -- e.g., 'Rack-02'
+    shelf TEXT NOT NULL,            -- e.g., 'Shelf-01'
+    bin TEXT NOT NULL,              -- e.g., 'Bin-01'
+    is_active INTEGER DEFAULT 1
+);
+
+-- 2. PRODUCT MASTER CATALOG (From Olist Products)
+CREATE TABLE IF NOT EXISTS product_catalog (
+    product_id TEXT PRIMARY KEY,
+    product_category_name TEXT,
+    product_weight_g REAL,
+    product_length_cm REAL,
+    product_height_cm REAL,
+    product_width_cm REAL,
+    reorder_point INTEGER DEFAULT 50,
+    safety_stock INTEGER DEFAULT 20,
+    max_stock INTEGER DEFAULT 500
+);
+
+-- 3. INVENTORY BALANCES (Per Bin Location)
+CREATE TABLE IF NOT EXISTS inventory_levels (
+    inventory_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id TEXT,
+    location_id TEXT,
+    qty_on_hand INTEGER DEFAULT 0 CHECK (qty_on_hand &gt;= 0),
+    qty_allocated INTEGER DEFAULT 0 CHECK (qty_allocated &gt;= 0),
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(product_id) REFERENCES product_catalog(product_id),
+    FOREIGN KEY(location_id) REFERENCES warehouse_locations(location_id),
+    UNIQUE(product_id, location_id)
+);
+
+-- 4. TRANSACTION AUDIT LOG (Receiving, Putaway, Pick, Transfer)
+CREATE TABLE IF NOT EXISTS inventory_transactions (
+    transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id TEXT,
+    from_location_id TEXT,
+    to_location_id TEXT,
+    qty_changed INTEGER NOT NULL,
+    transaction_type TEXT NOT NULL, -- 'RECEIVING', 'PICK', 'TRANSFER', 'CYCLE_COUNT'
+    transaction_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+---------------------------------------------------------------------------------------------------
+
+SELECT 
+    product_id, 
+    product_category_name, 
+    product_weight_g,
+    reorder_point,
+    safety_stock
+FROM product_catalog 
+LIMIT 10;
+
+------------------------------------------------------------------------------------------------------
+
+-- 1. SEED WAREHOUSE LOCATION HIERARCHY (100 BINS ACROSS ZONES A, B, C, D)
+WITH RECURSIVE 
+    zones(z) AS (VALUES ('A'), ('B'), ('C'), ('D')),
+    aisles(a) AS (SELECT 1 UNION ALL SELECT a + 1 FROM aisles WHERE a &lt; 5),
+    racks(r) AS (SELECT 1 UNION ALL SELECT r + 1 FROM racks WHERE r &lt; 5)
+INSERT OR IGNORE INTO warehouse_locations (location_id, zone, aisle, rack, shelf, bin, is_active)
+SELECT 
+    'WH1-Z' || z || '-A0' || a || '-R0' || r || '-B01' AS location_id,
+    'Zone-' || z AS zone,
+    'Aisle-0' || a AS aisle,
+    'Rack-0' || r AS rack,
+    'Shelf-01' AS shelf,
+    'Bin-01' AS bin,
+    1 AS is_active
+FROM zones, aisles, racks;
+
+
+-- 2. MAP TOP 300 SKUs TO RANDOM BINS WITH STARTING STOCK
+INSERT OR IGNORE INTO inventory_levels (product_id, location_id, qty_on_hand, qty_allocated, last_updated)
+SELECT 
+    p.product_id,
+    l.location_id,
+    (abs(random()) % 250) + 15 AS qty_on_hand, -- Starting stock between 15 and 265 units
+    (abs(random()) % 10) AS qty_allocated,     -- Allocated for pending picks
+    CURRENT_TIMESTAMP
+FROM product_catalog p
+JOIN warehouse_locations l ON l.location_id = (
+    SELECT location_id FROM warehouse_locations ORDER BY RANDOM() LIMIT 1
+)
+LIMIT 300;
+
+-- 3. LOG INITIAL RECEIVING TRANSACTIONS INTO AUDIT LOG
+INSERT INTO inventory_transactions (product_id, from_location_id, to_location_id, qty_changed, transaction_type, transaction_timestamp)
+SELECT 
+    product_id,
+    'SUPPLIER_DOCK' AS from_location_id,
+    location_id AS to_location_id,
+    qty_on_hand AS qty_changed,
+    'RECEIVING' AS transaction_type,
+    CURRENT_TIMESTAMP
+FROM inventory_levels;
+
+---------------------------------------------------------
+SELECT 
+    p.product_id,
+    p.product_category_name,
+    i.location_id,
+    w.zone,
+    i.qty_on_hand,
+    i.qty_allocated,
+    (i.qty_on_hand - i.qty_allocated) AS qty_available,
+    p.reorder_point
+FROM inventory_levels i
+JOIN product_catalog p ON i.product_id = p.product_id
+JOIN warehouse_locations w ON i.location_id = w.location_id
+LIMIT 10;
+
+
+------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+
+
+-- 1. OPTIMIZED PICK LIST GENERATOR (SERPENTINE / S-SHAPE PICK ROUTE)
+	
+	SELECT 
+    w.zone,
+    w.aisle,
+    w.rack,
+    w.shelf,
+    w.bin,
+    i.location_id,
+    i.product_id,
+    p.product_category_name,
+    i.qty_on_hand,
+    i.qty_allocated,
+    (i.qty_on_hand - i.qty_allocated) AS qty_available,
+    MIN(5, (i.qty_on_hand - i.qty_allocated)) AS qty_to_pick, 
+    'PICK_ORDER_9901' AS order_reference
+FROM inventory_levels i
+JOIN warehouse_locations w ON i.location_id = w.location_id
+JOIN product_catalog p ON i.product_id = p.product_id
+WHERE (i.qty_on_hand - i.qty_allocated) &gt; 0
+ORDER BY 
+    w.zone ASC, 
+    w.aisle ASC, 
+    w.rack ASC, 
+    w.shelf ASC, 
+    w.bin ASC;
+	
+	
+-- CREATE REPLENISHMENT ALERT VIEW
+CREATE VIEW IF NOT EXISTS v_wms_replenishment_alerts AS
+SELECT 
+    p.product_id,
+    p.product_category_name,
+    COALESCE(SUM(i.qty_on_hand), 0) AS total_on_hand,
+    COALESCE(SUM(i.qty_allocated), 0) AS total_allocated,
+    COALESCE(SUM(i.qty_on_hand - i.qty_allocated), 0) AS total_available,
+    p.safety_stock,
+    p.reorder_point,
+    p.max_stock,
+    -- Calculate required order quantity to replenish back to Max Stock Level
+    CASE 
+        WHEN COALESCE(SUM(i.qty_on_hand - i.qty_allocated), 0) &lt;= p.reorder_point 
+            THEN (p.max_stock - COALESCE(SUM(i.qty_on_hand - i.qty_allocated), 0))
+        ELSE 0
+    END AS target_po_reorder_qty,
+    -- Categorize Inventory Health
+    CASE 
+        WHEN COALESCE(SUM(i.qty_on_hand - i.qty_allocated), 0) &lt;= p.safety_stock 
+            THEN 'CRITICAL: Safety Stock Breached'
+        WHEN COALESCE(SUM(i.qty_on_hand - i.qty_allocated), 0) &lt;= p.reorder_point 
+            THEN 'WARNING: Reorder Point Hit'
+        ELSE 'HEALTHY'
+    END AS inventory_health_status
+FROM product_catalog p
+LEFT JOIN inventory_levels i ON p.product_id = i.product_id
+GROUP BY p.product_id, p.product_category_name, p.safety_stock, p.reorder_point, p.max_stock;	
+
+SELECT * FROM v_wms_replenishment_alerts 
+WHERE inventory_health_status != 'HEALTHY'
+ORDER BY total_available ASC;
+
+SELECT * FROM v_wms_replenishment_alerts 
+WHERE total_on_hand &gt; 0
+ORDER BY total_available ASC;
+
+
+-- 1. POPULATE INVENTORY FOR ALL SKUs IN THE CATALOG
+INSERT OR IGNORE INTO inventory_levels (product_id, location_id, qty_on_hand, qty_allocated, last_updated)
+SELECT 
+    p.product_id,
+    w.location_id,
+    (abs(random()) % 250) + 10 AS qty_on_hand, -- Random stock between 10 and 260
+    (abs(random()) % 8) AS qty_allocated,      -- Random allocation between 0 and 7
+    CURRENT_TIMESTAMP
+FROM product_catalog p
+JOIN (
+    -- Distribute SKUs evenly across warehouse locations
+    SELECT location_id, ROW_NUMBER() OVER (ORDER BY location_id) AS row_num 
+    FROM warehouse_locations
+) w ON (abs(random()) % 100 + 1) = w.row_num;
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+-- 3. ABC VELOCITY &amp; PARETO ANALYSIS QUERY
+WITH sku_valuations AS (
+    SELECT 
+        p.product_id,
+        p.product_category_name,
+        SUM(i.qty_on_hand) AS total_units,
+        COALESCE(p.product_weight_g, 100) AS unit_weight_g,
+        -- Mass volume calculation
+        SUM(i.qty_on_hand) * COALESCE(p.product_weight_g, 100) AS total_weight_volume
+    FROM product_catalog p
+    JOIN inventory_levels i ON p.product_id = i.product_id
+    GROUP BY p.product_id, p.product_category_name
+),
+cumulative_ranks AS (
+    SELECT 
+        product_id,
+        product_category_name,
+        total_units,
+        total_weight_volume,
+        -- SQLite Window function to find cumulative percentile
+        CUME_DIST() OVER (ORDER BY total_units DESC) AS cumulative_pct
+    FROM sku_valuations
+)
+SELECT 
+    product_id,
+    product_category_name,
+    total_units,
+    total_weight_volume,
+    ROUND(cumulative_pct * 100, 2) AS percentile_rank,
+    CASE 
+        WHEN cumulative_pct &lt;= 0.20 THEN 'Class A (Fast Mover -&gt; Slot near Dock / Zone A)'
+        WHEN cumulative_pct &lt;= 0.50 THEN 'Class B (Medium Mover -&gt; Zone B/C)'
+        ELSE 'Class C (Slow Mover -&gt; Upper Racks / Zone D)'
+    END AS abc_velocity_class
+FROM cumulative_ranks
+ORDER BY total_units DESC;
+
+
+
+CREATE VIEW IF NOT EXISTS v_wms_abc_pareto_analysis AS
+WITH sku_valuations AS (
+    SELECT 
+        p.product_id,
+        p.product_category_name,
+        SUM(i.qty_on_hand) AS total_units,
+        COALESCE(p.product_weight_g, 100) AS unit_weight_g,
+        SUM(i.qty_on_hand) * COALESCE(p.product_weight_g, 100) AS total_weight_volume
+    FROM product_catalog p
+    JOIN inventory_levels i ON p.product_id = i.product_id
+    GROUP BY p.product_id, p.product_category_name
+),
+cumulative_ranks AS (
+    SELECT 
+        product_id,
+        product_category_name,
+        total_units,
+        total_weight_volume,
+        CUME_DIST() OVER (ORDER BY total_units DESC) AS cumulative_pct
+    FROM sku_valuations
+)
+SELECT 
+    product_id,
+    product_category_name,
+    total_units,
+    total_weight_volume,
+    ROUND(cumulative_pct * 100, 2) AS percentile_rank,
+    CASE 
+        WHEN cumulative_pct &lt;= 0.20 THEN 'Class A (Fast Mover)'
+        WHEN cumulative_pct &lt;= 0.50 THEN 'Class B (Medium Mover)'
+        ELSE 'Class C (Slow Mover)'
+    END AS abc_velocity_class
+FROM cumulative_ranks;
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
