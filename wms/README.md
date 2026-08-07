@@ -1,5 +1,8 @@
 # 📦 Operational Warehouse Management System (WMS) Engine
 
+
+**🔗 Live Demo:** https://supply-chain-analytics-portfolio-kd588dqnknmv42kpzvwqyv.streamlit.app/
+
 A full-stack, operational Warehouse Management System (WMS) built using SQL, Python, and Streamlit on real-world e-commerce data from Kaggle (Olist Dataset).
 
 ## 🚀 Key Supply Chain Features
